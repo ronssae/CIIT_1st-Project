@@ -18,7 +18,6 @@ public class TextGameManager : MonoBehaviour
     void Start()
     {
         storyText = "THE SCHOOL BOY";
-        
         Stats.SetActive(false);
         Level1Choices.SetActive(false);
         Level2Choices.SetActive(false);
@@ -37,6 +36,7 @@ public class TextGameManager : MonoBehaviour
 
         HPvalue = 10;
         STAvalue = 10;
+
         Stats.SetActive(true);
         Main_Menu.SetActive(false);
         Level1Choices.SetActive(true);
@@ -44,7 +44,7 @@ public class TextGameManager : MonoBehaviour
     public void LetItGo()
     {
         storyText = "I made it to school on time,but I had a bad day.";
-        STAvalue-= 5;
+        STAvalue -= 5;
 
         Level1Choices.SetActive(false);
     }
