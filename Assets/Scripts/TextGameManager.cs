@@ -3,78 +3,99 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class TextGameManager : MonoBehaviour
 {
-    public TextMeshProUGUI storyTextMeshPro,HPtextMeshPro,StaminatextMeshPro;
+    public TextMeshProUGUI storyTextMeshPro;
     public string storyText;
-    public int HPValue,StaminaValue;
-    public GameObject Level_1_Choices, Level_2_Choices;
+    public TextMeshProUGUI HPtextMeshPro;
+    public int HPvalue;
+    public TextMeshProUGUI STAtextMeshPro;
+    public int STAvalue;
+    public GameObject Stats, Main_Menu, Level1Choices, Level2Choices;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        storyText = "THE SCHOOL BOY";
         
+        Stats.SetActive(false);
+        Level1Choices.SetActive(false);
+        Level2Choices.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         storyTextMeshPro.text = storyText;
-        HPtextMeshPro.text = HPValue.ToString();
-        StaminatextMeshPro.text = StaminaValue.ToString();
+        HPtextMeshPro.text = HPvalue.ToString();
+        STAtextMeshPro.text = STAvalue.ToString();
     }
+    public void StartGame()
+    {
+        storyText = "As I'm walking to school, a little boy suddenly threw an empty tin can on my head and ran to his house.";
 
-
+        HPvalue = 10;
+        STAvalue = 10;
+        Stats.SetActive(true);
+        Main_Menu.SetActive(false);
+        Level1Choices.SetActive(true);
+    }
     public void LetItGo()
     {
-        storyText = "I made it to school on time, but I had a bad day.";
-        StaminaValue -= 5;
+        storyText = "I made it to school on time,but I had a bad day.";
+        STAvalue-= 5;
 
-        Level_1_Choices.SetActive(false);
+        Level1Choices.SetActive(false);
     }
 
     public void ScoldHim()
     {
         storyText = "The dad punched me in the face and I fell asleep. I missed the school.";
-        HPValue -= 5;
-        StaminaValue -= 3;
+        HPvalue -= 5;
+        STAvalue -= 3;
 
-        Level_1_Choices.SetActive(false);
-        Level_2_Choices.SetActive(true);
+        Level1Choices.SetActive(false);
+        Level2Choices.SetActive(true);
     }
 
     public void AssaultHim()
     {
         storyText = "The dad killed me.";
-        HPValue -= 10;
-        StaminaValue -= 10;
+        HPvalue -= 10;
+        STAvalue -= 10;
 
-        Level_1_Choices.SetActive(false);
+        Level1Choices.SetActive(false);
     }
 
-    public void GoHome() 
+    public void GoHome()
     {
         storyText = "I went home, eat some cereal, and went to sleep for recovery.";
-        HPValue += 2;
-        StaminaValue += 2;
+        HPvalue += 2;
+        STAvalue += 2;
 
-        Level_2_Choices.SetActive(false);
+        Level2Choices.SetActive(false);
     }
 
     public void GoToSchool()
     {
         storyText = "The classes are over. I went home really tired.";
-        StaminaValue -= 5;
+        STAvalue-= 5;
 
-        Level_2_Choices.SetActive(false);
+        Level2Choices.SetActive(false);
     }
+
     public void FightDad()
     {
         storyText = "The dad beat me to death.";
-        HPValue -= 5;
-        StaminaValue -= 7;
+        HPvalue -= 5;
+        STAvalue -= 7;
 
-        Level_2_Choices.SetActive(false);
+        Level2Choices.SetActive(false);
+    }
+
+    public void ExitGame() 
+    {
+        Application.Quit();
     }
 }
